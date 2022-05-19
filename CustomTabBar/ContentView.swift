@@ -8,31 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @State var selectedIndex = 0
     
+    let tabBarImageNames = ["person", "gear", "plus.app.fill", "pencil", "lasso"]
+
     var body: some View {
         VStack {
-           
+
             ZStack {
-                
+
                 switch selectedIndex {
                 case 0:
-                    
-                    Text("First")
+                    NavigationView {
+                        Text("First")
+                            .navigationTitle("First Tab")
+                    }
                 default:
                     Text("Remaining tabs")
                 }
-                
+
             }
-            
+
+            Spacer()
             HStack {
-                Text("First Tab Button")
+                ForEach(0..<5) { num in
+                    Button(action: {}, label: {
+                        Spacer()
+                        Image(systemName: tabBarImageNames[num])
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(Color(.label))
+                        Spacer()
+                    })
+
+                }
+
             }
         }
 
     }
-    
+
 }
 
 
